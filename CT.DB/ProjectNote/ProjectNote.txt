@@ -1,0 +1,18 @@
+﻿
+**********************************
+ >「ColorfulTrip」以下簡稱「CT」<
+**********************************
+
+此為CT專案的DB Layer,以下：
+1.DB Connection由DBConfig.cs內容決定
+
+2.DB Update Model請使用下列指令
+ >SQL SERVER 使用Windows驗證
+「Scaffold-DbContext "Data Source={DB Server Name};Initial Catalog={DataBase Name};Integrated Security=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models」
+ >SQL SERVER 使用登入驗證
+「Scaffold-DbContext "Data Source={DB Server Name};Initial Catalog={DataBase Name};Integrated Security=False;User ID=ID;Password=Password;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models」
+
+3.由Model Update DB請使用下列指令
+ >Update-Database
+
+ #請注意「DBContext.cs」內OnConfiguring的UseSqlServer DBConnection是否正確。
