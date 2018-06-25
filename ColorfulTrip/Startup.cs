@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using CT.DB;
 using CT.DB.Models;
 using Microsoft.AspNetCore.Builder;
@@ -10,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using static CT.Services.DBService;
+using static CT.Services.TestService;
 
 namespace ColorfulTrip
 {
@@ -31,6 +29,7 @@ namespace ColorfulTrip
             //      options.UseSqlServer(Configuration.GetConnectionString("DB")));
             services
                 .AddScoped<IDBAction, IDBService>()
+                .AddScoped<IHashAction, IHashService>()
                 .AddDbContext<CTCoreContext>(options =>
                   options.UseSqlServer(new DBConfig().DevelopDBConn));
             #endregion
